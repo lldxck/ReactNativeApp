@@ -9,10 +9,12 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import SearchAndMore from '../common/HeaderSearchAndMore'
 
 class HomeScreen extends React.Component {
     static navigationOptions = {
-      title: 'Welcome to the app Home!',
+        headerRight:<SearchAndMore />,
+
     };
 
     render() {

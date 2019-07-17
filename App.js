@@ -7,6 +7,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import {MenuProvider} from 'react-native-popup-menu'
 
 import AppNavigator from './components/AppNavigator'
 
@@ -14,7 +15,10 @@ export default class App extends React.Component{
     render(){
         return(
             <View style={styles.container}>
-                <AppNavigator />
+                <MenuProvider>
+                    <AppNavigator />
+                </MenuProvider>
+
             </View>
         )
     }
