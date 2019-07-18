@@ -12,10 +12,6 @@ export default class SearchAndMore extends React.Component{
             isvisible:false
         }
     }
-
-
-
-
     render(){
         return(
             <View style={styles.container}>
@@ -35,7 +31,7 @@ export default class SearchAndMore extends React.Component{
                             <MenuOption onSelect={() => alert('进入more1页面')} style={styles.menuOption}>
                                 <View style={styles.MenuOptionConstainer}>
                                     <Ionicons name='ios-more' size={25} color={'#fff'}/>
-                                    <Text style={styles.text}>more2</Text>
+                                    <Text style={styles.text}>more1</Text>
                                 </View>
                             </MenuOption>
                             <MenuOption onSelect={() => alert('进入more2页面')}>
