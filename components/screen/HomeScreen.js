@@ -21,6 +21,14 @@ import Swiper from 'react-native-swiper'
 // 获取屏幕的宽高
 import ScreenDimensions from '../common/ScreenDimensions'
 const width = ScreenDimensions.window.width;
+// 显示格子数据一行数量
+const cols = 4;
+// 格子的宽度
+const cellWidth = 80;
+const horizontalMargin = ((width)-cols*cellWidth)/(cols+1);
+
+
+
 
 
 
@@ -31,6 +39,45 @@ export default class HomeScreen extends React.Component {
         this.state={
             // 轮播图数据
             bannerData:null,
+            //格子数据
+            cellData:[
+                {
+                    title:'格子1',
+                    img:require('../../assets/images/cell1.png')
+                },
+                {
+                    title:'格子2',
+                    img:require('../../assets/images/cell2.png')
+                },
+                {
+                    title:'格子3',
+                    img:require('../../assets/images/cell3.png')
+                },
+                {
+                    title:'格子4',
+                    img:require('../../assets/images/cell4.png')
+                },
+                {
+                    title:'格子5',
+                    img:require('../../assets/images/cell5.png')
+                },
+                {
+                    title:'格子6',
+                    img:require('../../assets/images/cell6.png')
+                },
+                {
+                    title:'格子7',
+                    img:require('../../assets/images/cell7.png')
+                },
+                {
+                    title:'格子8',
+                    img:require('../../assets/images/cell8.png')
+                },
+                // {
+                //     title:'格子9',
+                //     img:require('../../assets/images/cell9.png')
+                // },
+            ],
         }
     }
 
@@ -97,12 +144,37 @@ export default class HomeScreen extends React.Component {
         )
     }
 
+    // 渲染格子分类数据
+    renderCell(){
+        let allCell = [];
+        let cellData = this.state.cellData;
+        cellData.forEach((item,index) => {
+            let img = item.img;
+            console.log(img);
+            console.log(item.img)
+            console.log(item.title)
+            allCell.push(
+                <TouchableOpacity style={styles.outViewImgCell}>
+                    <Image style={styles.imgCell} source={img}/>
+                    <Text style={styles.cellText}>{item.title}</Text>
+                </TouchableOpacity>
+            )
+        })
+        return allCell;
+
+
+    }
+
     render() {
       return (
         <View style={styles.container}>
             {/* 轮播图banner */}
             <View style={styles.bannerContainer}>
                 {this.renderBanner()}
+            </View>
+            {/* 九宫格分类 */}
+            <View style={styles.cellContainer}>
+                {this.renderCell()}
             </View>
 
 
@@ -132,7 +204,7 @@ export default class HomeScreen extends React.Component {
     bannerContainer:{
         width:width,
         height:180,
-        marginBottom: 15,
+        marginBottom: 10,
     },
     swiper:{
         width:width,
@@ -163,6 +235,36 @@ export default class HomeScreen extends React.Component {
     },
     bannerButton:{
         color:'tomato',
+    },
+    // 格子布局样式
+    cellContainer:{
+        width:width,
+        marginBottom:15,
+        // 横向显示
+        flexDirection: 'row',
+        // 换行
+        flexWrap: 'wrap',
+        backgroundColor:'#eee'
+    },
+    outViewImgCell:{
+        width:cellWidth,
+        height:cellWidth,
+        // backgroundColor:'#ccc',
+        marginTop:10,
+        alignItems: 'center',
+        justifyContent:'center',
+        marginLeft:horizontalMargin,
+
+    },
+    imgCell:{
+        width:40,
+        height:40,
+        borderRadius:20,
+    },
+    cellText:{
+        color:'#666',
+        fontSize:14,
+        marginTop:6,
     },
   });
 
