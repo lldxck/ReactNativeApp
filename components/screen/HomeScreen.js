@@ -154,7 +154,7 @@ export default class HomeScreen extends React.Component {
             console.log(item.img)
             console.log(item.title)
             allCell.push(
-                <TouchableOpacity style={styles.outViewImgCell}>
+                <TouchableOpacity style={styles.outViewImgCell} key={index}>
                     <Image style={styles.imgCell} source={img}/>
                     <Text style={styles.cellText}>{item.title}</Text>
                 </TouchableOpacity>
@@ -163,6 +163,11 @@ export default class HomeScreen extends React.Component {
         return allCell;
 
 
+    }
+
+    // 进入视频播放页面
+    showVideoPlay (){
+        this.props.navigation.navigate('VideoPlay');
     }
 
     render() {
@@ -181,6 +186,7 @@ export default class HomeScreen extends React.Component {
 
           <Button title="Show me more of the app" onPress={this._showMoreApp} />
           <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
+          <Button title="进入视频播放页面" onPress={this.showVideoPlay.bind(this)} />
         </View>
       );
     }
@@ -193,6 +199,8 @@ export default class HomeScreen extends React.Component {
       await AsyncStorage.clear();
       this.props.navigation.navigate('Login');
     };
+
+
   }
 
   const styles = StyleSheet.create({
@@ -244,12 +252,12 @@ export default class HomeScreen extends React.Component {
         flexDirection: 'row',
         // 换行
         flexWrap: 'wrap',
-        backgroundColor:'#eee'
+        backgroundColor:'#eee',
     },
     outViewImgCell:{
         width:cellWidth,
         height:cellWidth,
-        // backgroundColor:'#ccc',
+        // backgroundColor:'#eee',
         marginTop:10,
         alignItems: 'center',
         justifyContent:'center',

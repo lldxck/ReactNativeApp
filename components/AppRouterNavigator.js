@@ -13,6 +13,7 @@ import { createStackNavigator, createSwitchNavigator, createAppContainer, create
 import BottomTabBar from './AppBottomTabNavigator'
 
 import Details from './Details'
+import VideoPlay from './VideoPlay'
 export default AppRouterNavigator = createStackNavigator(
     {
         BottomTabNavigation:{
@@ -23,5 +24,6 @@ export default AppRouterNavigator = createStackNavigator(
         },
         // 在这里写页面其他的组件路由
         Details:Details,
+        VideoPlay:VideoPlay,
     }
 );
